@@ -1,0 +1,84 @@
+[build-system]
+requires = ["setuptools>=75.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ismscompanion"
+version = "0.1.0"
+description = "ISMS Security Companion"
+readme = "README.md"
+authors = [
+    {name = "Manuel Wiesner", email = "manuelwiesner@mailbox.org"}
+]
+license = {text = "GPLv3"}
+requires-python = ">=3.11"
+
+# Core Backend Dependencies (für Web + Sidecar)
+dependencies = [
+    "fastapi>=0.115.0",        # Web Framework + API
+    "uvicorn>=0.30.0",         # ASGI Server
+    "sqlalchemy>=2.0.35",      # Database ORM
+    "pydantic>=2.8.0",         # Data Validation
+    "cryptography>=43.0.0",    # Encryption & Security
+    "bcrypt>=5.0.0",           # Password Hashing
+    "python-multipart>=0.0.6", # Form/File Upload handling
+]
+
+[project.optional-dependencies]
+# Sidecar Build Tools
+build = [
+    "pyinstaller>=6.0",       # For Tauri Sidecar Binary
+]
+
+# Development Tools
+dev = [
+    "pytest>=8.0.0",         # Tests
+    "black>=24.0.0",         # Code Formatting
+    "ruff>=0.6.0",           # Linting
+    "mypy>=1.10.0",          # Type Checking
+]
+
+# Security Tools
+security = [
+    "bandit>=1.7.9",         # Security Scanner
+    "safety>=3.0.0",         # Vulnerability Scanner
+]
+
+# Vereinfachte Entry Points (nur Backend)
+[project.scripts]
+ismscompanion-web = "src.backend.main:start_server"  # Web-Server-Version
+
+# URLs
+[project.urls]
+Homepage = "https://github.com/Manuel-Wiesner/ISMSCompanion"
+Repository = "https://github.com/Manuel-Wiesner/ISMSCompanion.git"
+Issues = "https://github.com/Manuel-Wiesner/ISMSCompanion/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# Tool Configurations
+[tool.black]
+line-length = 88
+target-version = ['py311']
+
+[tool.ruff]
+select = ["E", "F", "W", "C", "N", "B", "S"]
+line-length = 88
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.bandit]
+exclude_dirs = ["tests"]
+skips = ["B101"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
