@@ -1,0 +1,44 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:best-practices"],
+  "timezone": "Europe/Berlin",
+  "schedule": ["before 5am on Saturday"],
+  "separateMajorMinor": true,
+  "prConcurrentLimit": 3,
+  "packageRules": [
+    {
+      "description": "Security-critical Dependencies",
+      "matchPackageNames": [
+        "cryptography",
+        "sqlalchemy",
+        "fastapi",
+        "uvicorn",
+        "pydantic",
+        "bcrypt"
+      ],
+      "schedule": ["at any time"],
+      "automerge": false,
+      "addLabels": ["security-update", "high-priority"],
+      "prPriority": 10
+    },
+    {
+      "description": "Development Tools - Non-Critical",
+      "matchPackageNames": ["pytest", "black", "ruff", "mypy", "pre-commit"],
+      "schedule": ["before 5am on Saturday"],
+      "automerge": false,
+      "addLabels": ["dev-tools"]
+    },
+    {
+      "description": "Rust/Tauri Dependencies - All Updates",
+      "matchManagers": ["cargo"],
+      "schedule": ["before 5am on Saturday"],
+      "separateMajorMinor": true,
+      "automerge": false,
+      "addLabels": ["rust-update"]
+    }
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 5am on Saturday"]
+  }
+}
