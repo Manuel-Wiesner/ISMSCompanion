@@ -10,7 +10,7 @@ readme = "README.md"
 authors = [
     {name = "Manuel Wiesner", email = "manuelwiesner@mailbox.org"}
 ]
-license = {text = "GPLv3"}
+license = "GPL-3.0-or-later"
 requires-python = ">=3.11"
 
 # Core Backend Dependencies (für Web + Sidecar)
