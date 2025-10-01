@@ -20,7 +20,7 @@ dependencies = [
     "sqlalchemy>=2.0.35",      # Database ORM
     "pydantic>=2.8.0",         # Data Validation
     "cryptography>=43.0.0",    # Encryption & Security
-    "bcrypt>=5.0.0",           # Password Hashing
+    "argon2-cffi>=25.1.0",     # Password Hashing
     "python-multipart>=0.0.6", # Form/File Upload handling
 ]
 
