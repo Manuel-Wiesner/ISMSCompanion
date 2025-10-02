@@ -23,7 +23,7 @@ jobs:
       - name: Setup Python 3.11
         uses: actions/setup-python@v6
         with:
-          python-version: "3.11"
+          python-version: "~3.11.4"
           cache: "pip"
 
       - name: Upgrade pip/setuptools/wheel
@@ -36,7 +36,10 @@ jobs:
       - name: Install pip-audit
         run: pip install pip-audit
       - name: Run pip-audit
-        run: pip-audit
+        run: |
+          # CVE-2025-8869: False Positive - Python 3.11.13 implements PEP 706
+          # Skip editable installs (local ismscompanion package)
+          pip-audit --skip-editable --ignore-vuln GHSA-4xh5-x5gv-qwph --desc
 
       - name: Ruff Format Check
         run: ruff format --check .

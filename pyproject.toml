@@ -11,7 +11,7 @@ authors = [
     {name = "Manuel Wiesner", email = "manuelwiesner@mailbox.org"}
 ]
 license = "GPL-3.0-or-later"
-requires-python = ">=3.11"
+requires-python = ">=3.11.4" # Security: PEP 706 (tarfile) - mitigates CVE-2025-8869 and related vulnerabilities
 
 # Core Backend Dependencies (für Web + Sidecar)
 dependencies = [
