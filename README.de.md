@@ -1,3 +1,5 @@
+[![Security Audit](https://github.com/Manuel-Wiesner/ismscompanion/actions/workflows/push-lint-security.yml/badge.svg)](https://github.com/Manuel-Wiesner/ismscompanion/actions/workflows/push-lint-security.ymlhttps://github.com/Manuel-Wiesner/ismscompanion/actions/workflows/push-lint-security.yml)
+
 # ISMSCompanion
 
 Ein umfassendes Toolkit für Informationssicherheits-Managementsysteme (ISMS), das darauf ausgelegt ist, die Lücke zwischen grundlegendem Sicherheitsbewusstsein und Compliance-Anforderungen auf Unternehmensebene zu schließen.
